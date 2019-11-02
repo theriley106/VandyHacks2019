@@ -6,6 +6,7 @@ import time
 # This is the ensure you're not pulling the page 5000 times...
 page_cache = {}
 
+# This is literally only because GOGO inflight wifi is really slow...
 def get_page_from_url(url):
 	if url not in page_cache:
 		res = requests.get(url)
