@@ -3,7 +3,7 @@ from musicController import parseURL
 
 app = Flask(__name__, static_url_path='/static')
 
-@app.route('/', methods=['GET', "POST"])
+@app.route('/addSong', methods=["POST"])
 def index():
 	data = request.get_json()
 	url = data['url']
