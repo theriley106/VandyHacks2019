@@ -2,6 +2,7 @@
 
 ## Random Notes
 
+```
 flask app
 	add song api endpoint
 		post request that takes in a song and posts the data to mongodb
@@ -22,3 +23,4 @@ functions
 
 swift app
 	share extension to send post request with song url to server
+```
