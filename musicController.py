@@ -62,6 +62,20 @@ class parseURL():
 		return
 
 	def parse_apple_music(self):
+
+		page = get_page_from_url(self.url)
+
+
+		# page.select("is-deep-linked")
+		self.song = page.select(".is-deep-linked .table__row__headline")[0].getText().strip()
+		self.artist = page.select(".section__headline")[0].getText().replace("More By ", "")
+		# self.album_art = split_between(str(page.select(".we-artwork__source")[0]), 'srcset="', '"')
+		self.year = page.select(".link-list__item__date")[0].getText().split(", ")[1]
+		listOfAllUrlsAsString = split_between(str(page.select(".we-artwork__source")[0]), 'srcset="', '"/').split(",")
+		self.album_art = listOfAllUrlsAsString[-1].partition(" ")[0]
+		self.album = page.select(".product-header__title")[0].getText()
+		# duration = page.select(".is-deep-linked .table__row__duration-counter")[0].getText()
+		self.fingerprint = self.gen_fingerprint()
 		return
 
 	def parse_google_play(self):
