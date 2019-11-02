@@ -12,6 +12,10 @@ def index():
 	print request.get_json()
 	return jsonify(data)
 
+@app.route('/playSong', methods=["GET"])
+def play_next_song():
+	return "playing next song"
+
 @app.route('/test', methods=['GET'])
 def testPage():
 	return render_template("index1.html")
