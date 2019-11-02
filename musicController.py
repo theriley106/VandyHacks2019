@@ -2,6 +2,9 @@ import requests
 import bs4
 import json
 import time
+import main
+import threading
+import os
 
 # This is the ensure you're not pulling the page 5000 times...
 page_cache = {}
@@ -87,11 +90,8 @@ class controller():
 		return self.order[0]['fingerprint']
 
 
-songController = controller()
-
-
 class parseURL():
-	def __init__(self, url):
+	def __init__(self, url, download=True):
 		# This maps the given url to a specific function
 		# AKA really bad code but okay...
 		functionMap = {
@@ -120,6 +120,8 @@ class parseURL():
 		self.album = None
 		self.fingerprint = None
 
+		self.do_download = download
+
 		urlParse()
 
 	def gen_fingerprint(self):
@@ -145,6 +147,8 @@ class parseURL():
 		self.album = spotifyDoc["name"]
 		self.song = page.title.string.partition(", a ")[0]
 		self.fingerprint = self.gen_fingerprint()
+
+		self.download()
 		return
 
 	def parse_apple_music(self):
@@ -162,10 +166,16 @@ class parseURL():
 		self.album = page.select(".product-header__title")[0].getText()
 		# duration = page.select(".is-deep-linked .table__row__duration-counter")[0].getText()
 		self.fingerprint = self.gen_fingerprint()
+
+		threading.Thread(target=self.download).start()
 		return
 
 	def parse_google_play(self):
 		return
+
+	def download(self):
+		if self.do_download and os.path.exists("songs/{}.mp3".format(self.fingerprint)) == False:
+			main.download_song(self.fingerprint, self.song, self.artist)
 
 	def parse_youtube(self):
 		return
@@ -175,6 +185,7 @@ class parseURL():
 
 
 if __name__ == '__main__':
+	songController = controller()
 	# parseURL("https://open.spotify.com/track/3h3pOvw6hjOvZxRUseB7h9?si=XeSg8xLFQpC8LED2A1uWaQ")
 	# parseURL("https://music.apple.com/us/album/one-thing-right-firebeatz-remix/1475133249?i=1475133252")
 	for val in EXAMPLE_SONGS:
