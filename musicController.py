@@ -23,11 +23,14 @@ def split_between(string, part1, part2):
 
 
 EXAMPLE_SONGS = [
-	"https://music.apple.com/us/album/green-light/1428764777?i=1428766615", 
-	"https://open.spotify.com/track/0V8FYVlBFuXXTIvRnMbZyS",
-	"https://open.spotify.com/track/0V8FYVlBFuXXTIvRnMbZyS",
-	"https://open.spotify.com/track/2ekn2ttSfGqwhhate0LSR0",
-	"https://open.spotify.com/track/2ekn2ttSfGqwhhate0LSR0"
+	"https://music.apple.com/us/album/green-light/1428764777?i=1428766615",
+	"https://open.spotify.com/track/6ie2Bw3xLj2JcGowOlcMhb?si=v8-SiKL_Q6Gr8QrX8uV8Sg",
+	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
+	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
+	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
+	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
+	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
+	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
 	]
 
 
@@ -200,4 +203,3 @@ if __name__ == '__main__':
 	for i in range(5):
 		song = songController.play_next()
 		print("Playing: {} | Next Song: {}".format(song, songController.get_next()))
-		

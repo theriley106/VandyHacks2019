@@ -1,6 +1,0 @@
-#00004E - dark navy
-#020082 - navy 
-#1873D3 - light navy
-#EDEDF9 - off-white
-
-

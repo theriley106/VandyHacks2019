@@ -3,7 +3,7 @@ import musicController
 from flask_sockets import Sockets
 import datetime
 import time
-
+import main
 app = Flask(__name__, static_url_path='/static')
 sockets = Sockets(app)
 
@@ -23,6 +23,18 @@ for i in range(5):
 	print("Playing: {} | Next Song: {}".format(song, songController.get_next()))
 
 '''
+
+@app.route("/postRequest", methods=["POST"])
+def post_request():
+	#print request.data
+	#print request.get_json
+	url = dict(request.form).keys()[0].partition("?")[0]
+	returnedData = musicController.parseURL(url, download=True)
+	x = vars(returnedData)
+	main.addToDB(x)
+	songController.add(x)
+	return 'This works'
+
 @app.route("/getSongOrder", methods=["GET"])
 def get_song_order():
 	b = ""
@@ -53,7 +65,7 @@ def get_song_order():
 def echo_socket(ws):
 	prevValue = None
 	while True:
-		print songController.order
+		# print songController.order
 		if str(songController.order) != str(prevValue):
 			ws.send(str(datetime.datetime.now()))
 			prevValue = str(songController.order)
@@ -86,10 +98,12 @@ def index():
 	data = request.get_json()
 	url = data['url']
 	returnedData = musicController.parseURL(url, download=True)
-	songController.add(vars(returnedData))
-	return jsonify(returnedData.return_values())
-	print request.get_json()
-	return jsonify(data)
+	# raw_input(vars(returnedData))
+	#returnedData = parseURL(url, download=True)
+	x = vars(returnedData)
+	main.addToDB(x)
+	songController.add(x)
+	return 'This works'
 
 @app.route('/playCurrent', methods=["GET"])
 def play_current_song():

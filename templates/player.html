@@ -64,118 +64,53 @@
 
   </style>
 
+  <script>
+  window.audio = null;
+  function refresh(){
+    // window.audio.stop()
+    window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
+    update_order();
+  }
+
+  function update_order(){
+    document.getElementById("listOfSongs").innerHTML = httpGet("/getSongOrder");
+    document.getElementById("rowVals").innerHTML = httpGet("/getCurrent");
+    document.getElementById("albumArt").src = httpGet("/getCurrentAlbumArtwork");
+  }
+
+  function play_next(){
+    httpGet("/playNext");
+    if (window.audio !== null){
+      window.audio.pause();
+    }
+    window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
+    window.audio.play;
+    update_order();
+  }
+
+  function httpGet(theUrl)
+// The network request grabs the json containing mp3 structure
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
+
+  </script>
+
   <div class="container top-container">
     <div class="row">
-      <img src="logo.png" class="mx-auto logo-img">
+      <img src="/static/logo.png" class="mx-auto logo-img">
     </div>
     <div class="row">
       <div class="col">
-        <img src="albumart.jpg" class="mx-auto d-block album">
+        <img id="albumArt" style="height:500px; width: 500px;" class="mx-auto d-block album">
       </div>
       <div class="col">
-        <div class="vertical-menu">
+        <div id='listOfSongs' class="vertical-menu">
 
-          <li href="#">
-            <div class="song-detail">
-              <div class="row">
-                <div class="col">
-                  <h3>Song</h3>
-                  <p>Artist | Album</p>
-                </div>
-                <div class="col">
-                  <div class="row mx-auto float-right float-right">
-                    <a onclick="document.getElementById('up1').src='upactive.png'; document.getElementById('down1').src='down.png'"><img id="up1" src="up.png" class="arrow"/></a>
-                    <a onclick="document.getElementById('up1').src='up.png'; document.getElementById('down1').src='downactive.png'"><img id="down1" src="down.png" class="arrow "/></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li href="#">
-            <div class="song-detail">
-              <div class="row">
-                <div class="col">
-                  <h3>Song</h3>
-                  <p>Artist | Album</p>
-                </div>
-                <div class="col">
-                  <div class="row mx-auto float-right float-right">
-                    <a onclick="document.getElementById('up2').src='upactive.png'; document.getElementById('down2').src='down.png'"><img id="up2" src="up.png" class="arrow"/></a>
-                    <a onclick="document.getElementById('up2').src='up.png'; document.getElementById('down2').src='downactive.png'"><img id="down2" src="down.png" class="arrow "/></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li href="#">
-            <div class="song-detail">
-              <div class="row">
-                <div class="col">
-                  <h3>Song</h3>
-                  <p>Artist | Album</p>
-                </div>
-                <div class="col">
-                  <div class="row mx-auto float-right float-right">
-                    <a onclick="document.getElementById('up3').src='upactive.png'; document.getElementById('down3').src='down.png'"><img id="up3" src="up.png" class="arrow"/></a>
-                    <a onclick="document.getElementById('up3').src='up.png'; document.getElementById('down3').src='downactive.png'"><img id="down3" src="down.png" class="arrow "/></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li href="#">
-            <div class="song-detail">
-              <div class="row">
-                <div class="col">
-                  <h3>Song</h3>
-                  <p>Artist | Album</p>
-                </div>
-                <div class="col">
-                  <div class="row mx-auto float-right float-right">
-                    <a onclick="document.getElementById('up4').src='upactive.png'; document.getElementById('down4').src='down.png'"><img id="up4" src="up.png" class="arrow"/></a>
-                    <a onclick="document.getElementById('up4').src='up.png'; document.getElementById('down4').src='downactive.png'"><img id="down4" src="down.png" class="arrow "/></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li href="#">
-            <div class="song-detail">
-              <div class="row">
-                <div class="col">
-                  <h3>Song</h3>
-                  <p>Artist | Album</p>
-                </div>
-                <div class="col">
-                  <div class="row mx-auto float-right float-right">
-                    <a onclick="document.getElementById('up5').src='upactive.png'; document.getElementById('down5').src='down.png'"><img id="up5" src="up.png" class="arrow"/></a>
-                    <a onclick="document.getElementById('up5').src='up.png'; document.getElementById('down5').src='downactive.png'"><img id="down5" src="down.png" class="arrow "/></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li href="#">
-            <div class="song-detail">
-              <div class="row">
-                <div class="col">
-                  <h3>Song</h3>
-                  <p>Artist | Album</p>
-                </div>
-                <div class="col">
-                  <div class="row mx-auto float-right float-right">
-                    <a onclick="document.getElementById('up6').src='upactive.png'; document.getElementById('down6').src='down.png'"><img id="up6" src="up.png" class="arrow"/></a>
-                    <a onclick="document.getElementById('up6').src='up.png'; document.getElementById('down6').src='downactive.png'"><img id="down6" src="down.png" class="arrow "/></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
 
 
 
@@ -184,28 +119,31 @@
 
       <div class="row play-info mx-auto">
         <div class="col">
-          <div class="row">
-            <h1>Never Let Me Down</h2>
-          </div>
-          <div class="row">
-            <h3>Kanye West | College Dropout</h3>
-          </div>
+          <div id="rowVals">
+            
+        </div>
           <div class="row mx-auto">
-            <img src="back.png" class="play-button"/>
+            <img src="/static/back.png" class="play-button"/>
             <script type="text/javascript">
-              function test()
+              function play()
               {
+                  if (window.audio.paused === true){
+                    console.log(window.audio.paused);
+                    console.log("PAUSED");
+                    window.audio.play();
+                  document.getElementById("playButtonImage").src = "/static/pause.png";
+                } else {
 
-                  if (document.pic.src=='file:///C:/Users/johnw/Documents/GitHub/VandyHacks2019/pause.png'){
-                    document.pic.src='play.png';
-                  }
-                  else if (document.pic.src=='file:///C:/Users/johnw/Documents/GitHub/VandyHacks2019/play.png'){
-                    document.pic.src='pause.png';
-                  }
+                  window.audio.pause();
+                  document.getElementById("playButtonImage").src = "/static/play.png";
+                }
+                  
               }
+
+
             </script>
-            <img src="pause.png" name="pic" onclick="test()" class="play-button"/>
-            <img src="skip.png" class="play-button"/>
+            <img src="/static/play.png" name="pic"  id="playButtonImage" onclick="play()" class="play-button"/>
+            <img src="/static/skip.png" onclick="play_next()" class="play-button"/>
           </div>
         </div>
       </div>
@@ -213,6 +151,24 @@
     </div>
 
   </div>
+
+  <script>
+
+  
+
+  var ws = new WebSocket("ws://localhost:8000/echo");
+       ws.onopen = function() {
+           ws.send("socket open");
+           console.log("SOCKET OPEN");
+       };
+       ws.onclose = function(evt) {
+           alert("socket closed");
+       };
+       ws.onmessage = function(evt) {
+          console.log(evt.data);
+            refresh();
+       };
+  </script>
 
 </body>
 </html>
