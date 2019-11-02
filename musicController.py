@@ -3,6 +3,20 @@ import bs4
 import json
 import time
 
+# This is the ensure you're not pulling the page 5000 times...
+page_cache = {}
+
+def get_page_from_url(url):
+	if url not in page_cache:
+		res = requests.get(url)
+		page_cache[url] = bs4.BeautifulSoup(res.text)
+	return page_cache[url]
+
+def split_between(string, part1, part2):
+	return string.partition(part1)[2].partition(part2)[0]
+
+
+
 EXAMPLE_SONGS = [
 	"https://music.apple.com/us/album/green-light/1428764777?i=1428766615", 
 	"https://open.spotify.com/track/6ie2Bw3xLj2JcGowOlcMhb?si=v8-SiKL_Q6Gr8QrX8uV8Sg",
