@@ -11,3 +11,11 @@ flask app
 	index endpoint
 		loads index.html -> this is a web app that displays songs with their order
 			web socket that reloads every 5 seconds with song order
+
+functions
+	function that pulls data from mongodb and keeps track of song order
+		give unique identifier to song
+	function that parses spotify
+	function that parses apple music
+	function that downloads songs given artist and song name
+		maybe unique identifier.mp3 could be song name?
