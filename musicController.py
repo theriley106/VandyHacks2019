@@ -3,6 +3,18 @@ import bs4
 import json
 import time
 
+EXAMPLE_SONGS = [
+	"https://music.apple.com/us/album/green-light/1428764777?i=1428766615", 
+	"https://open.spotify.com/track/6ie2Bw3xLj2JcGowOlcMhb?si=v8-SiKL_Q6Gr8QrX8uV8Sg",
+	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
+	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
+	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
+	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
+	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
+	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
+	]
+
+
 
 class parseURL():
 	def __init__(self, url):
@@ -86,3 +98,24 @@ class parseURL():
 
 	def return_values(self):
 		return vars(self)
+
+
+if __name__ == '__main__':
+	# parseURL("https://open.spotify.com/track/3h3pOvw6hjOvZxRUseB7h9?si=XeSg8xLFQpC8LED2A1uWaQ")
+	# parseURL("https://music.apple.com/us/album/one-thing-right-firebeatz-remix/1475133249?i=1475133252")
+	for val in EXAMPLE_SONGS:
+		songInfo = parseURL(val)
+		songController.add(vars(songInfo))
+	# print a.album_art
+	# print a.return_values()
+	# print songController.count
+	for i, val in enumerate(songController.order):
+		print("{} - {}".format(i, val['song']))
+
+	for i in range(5):
+		song = songController.play_next()
+		print("Playing: {} | Next Song: {}".format(song, songController.get_next()))
+
+	
+	# print RANKING.order
+		
