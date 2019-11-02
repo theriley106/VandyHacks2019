@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QueuedUp</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body >
+  <style media="screen">
+  .vertical-menu {
+    width: 500px;
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    }
+
+    .vertical-menu li {
+    background-color: #EDEDF9;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    }
+
+    .vertical-menu li:hover {
+    background-color: #ccc;
+    }
+
+    .arrow{
+      width: 50px;
+      margin: 15px;
+    }
+
+    .album {
+      border-radius: 25px;
+    }
+
+    .top-container{
+      padding: 25px;
+    }
+
+    .play-info{
+      padding: 25px;
+    }
+
+    .play-button{
+      width: 100px;
+      margin: 10px;
+    }
+
+    .logo-img{
+      width: 50%;
+      margin-bottom: 20px;
+    }
+
+    h1{
+      color: #00004E;
+    }
+
+    h3{
+      color: #00004E;
+    }
+
+  </style>
+
+  <div class="container top-container">
+    <div class="row">
+      <img src="logo.png" class="mx-auto logo-img">
+    </div>
+    <div class="row">
+      <div class="col">
+        <img src="albumart.jpg" class="mx-auto d-block album">
+      </div>
+      <div class="col">
+        <div class="vertical-menu">
+
+          <li href="#">
+            <div class="song-detail">
+              <div class="row">
+                <div class="col">
+                  <h3>Song</h3>
+                  <p>Artist | Album</p>
+                </div>
+                <div class="col">
+                  <div class="row mx-auto float-right float-right">
+                    <a onclick="document.getElementById('up1').src='upactive.png'; document.getElementById('down1').src='down.png'"><img id="up1" src="up.png" class="arrow"/></a>
+                    <a onclick="document.getElementById('up1').src='up.png'; document.getElementById('down1').src='downactive.png'"><img id="down1" src="down.png" class="arrow "/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li href="#">
+            <div class="song-detail">
+              <div class="row">
+                <div class="col">
+                  <h3>Song</h3>
+                  <p>Artist | Album</p>
+                </div>
+                <div class="col">
+                  <div class="row mx-auto float-right float-right">
+                    <a onclick="document.getElementById('up2').src='upactive.png'; document.getElementById('down2').src='down.png'"><img id="up2" src="up.png" class="arrow"/></a>
+                    <a onclick="document.getElementById('up2').src='up.png'; document.getElementById('down2').src='downactive.png'"><img id="down2" src="down.png" class="arrow "/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li href="#">
+            <div class="song-detail">
+              <div class="row">
+                <div class="col">
+                  <h3>Song</h3>
+                  <p>Artist | Album</p>
+                </div>
+                <div class="col">
+                  <div class="row mx-auto float-right float-right">
+                    <a onclick="document.getElementById('up3').src='upactive.png'; document.getElementById('down3').src='down.png'"><img id="up3" src="up.png" class="arrow"/></a>
+                    <a onclick="document.getElementById('up3').src='up.png'; document.getElementById('down3').src='downactive.png'"><img id="down3" src="down.png" class="arrow "/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li href="#">
+            <div class="song-detail">
+              <div class="row">
+                <div class="col">
+                  <h3>Song</h3>
+                  <p>Artist | Album</p>
+                </div>
+                <div class="col">
+                  <div class="row mx-auto float-right float-right">
+                    <a onclick="document.getElementById('up4').src='upactive.png'; document.getElementById('down4').src='down.png'"><img id="up4" src="up.png" class="arrow"/></a>
+                    <a onclick="document.getElementById('up4').src='up.png'; document.getElementById('down4').src='downactive.png'"><img id="down4" src="down.png" class="arrow "/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li href="#">
+            <div class="song-detail">
+              <div class="row">
+                <div class="col">
+                  <h3>Song</h3>
+                  <p>Artist | Album</p>
+                </div>
+                <div class="col">
+                  <div class="row mx-auto float-right float-right">
+                    <a onclick="document.getElementById('up5').src='upactive.png'; document.getElementById('down5').src='down.png'"><img id="up5" src="up.png" class="arrow"/></a>
+                    <a onclick="document.getElementById('up5').src='up.png'; document.getElementById('down5').src='downactive.png'"><img id="down5" src="down.png" class="arrow "/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li href="#">
+            <div class="song-detail">
+              <div class="row">
+                <div class="col">
+                  <h3>Song</h3>
+                  <p>Artist | Album</p>
+                </div>
+                <div class="col">
+                  <div class="row mx-auto float-right float-right">
+                    <a onclick="document.getElementById('up6').src='upactive.png'; document.getElementById('down6').src='down.png'"><img id="up6" src="up.png" class="arrow"/></a>
+                    <a onclick="document.getElementById('up6').src='up.png'; document.getElementById('down6').src='downactive.png'"><img id="down6" src="down.png" class="arrow "/></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+
+
+        </div>
+      </div>
+
+      <div class="row play-info mx-auto">
+        <div class="col">
+          <div class="row">
+            <h1>Never Let Me Down</h2>
+          </div>
+          <div class="row">
+            <h3>Kanye West | College Dropout</h3>
+          </div>
+          <div class="row mx-auto">
+            <img src="back.png" class="play-button"/>
+            <script type="text/javascript">
+              function test()
+              {
+
+                  if (document.pic.src=='file:///C:/Users/johnw/Documents/GitHub/VandyHacks2019/pause.png'){
+                    document.pic.src='play.png';
+                  }
+                  else if (document.pic.src=='file:///C:/Users/johnw/Documents/GitHub/VandyHacks2019/play.png'){
+                    document.pic.src='pause.png';
+                  }
+              }
+            </script>
+            <img src="pause.png" name="pic" onclick="test()" class="play-button"/>
+            <img src="skip.png" class="play-button"/>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
