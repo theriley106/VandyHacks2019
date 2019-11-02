@@ -177,16 +177,10 @@ if __name__ == '__main__':
 	for val in EXAMPLE_SONGS:
 		songInfo = parseURL(val)
 		songController.add(vars(songInfo))
-	# print a.album_art
-	# print a.return_values()
-	# print songController.count
 	for i, val in enumerate(songController.order):
 		print("{} - {}".format(i, val['song']))
 
 	for i in range(5):
 		song = songController.play_next()
 		print("Playing: {} | Next Song: {}".format(song, songController.get_next()))
-
-	
-	# print RANKING.order
 		
