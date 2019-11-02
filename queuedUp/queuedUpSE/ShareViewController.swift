@@ -32,18 +32,39 @@ class ShareViewController: SLComposeServiceViewController {
                         if let shareURL = url as? NSURL {
                             print (shareURL.absoluteString!);
                             let newURL: String = shareURL.absoluteString!;
-                            let url = URL(string: "https://ptsv2.com/t/yjn0q-1572713140/post")!
+                            let url = URL(string: "https://5ad25bf7.ngrok.io/postRequest")!
                             var request = URLRequest(url: url)
                             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                             request.httpMethod = "POST"
-                            request.httpBody = newURL.data(using: .utf8);
-
-                            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-                                guard let data = data else { return }
-                                print(String(data: data, encoding: .utf8)!)
+                            request.httpBody = Data(newURL.utf8);
+                            let session = URLSession.shared;
+                            let webTask = session.dataTask(with: request, completionHandler: {data, response, error in
+                            guard error == nil else {
+                            print(error?.localizedDescription ?? "Response Error")
+                            return
                             }
-
-                            task.resume()
+                            guard let serverData = data else {
+                            print("server data error")
+                            return
+                            }
+                            do {
+                            if let requestJson = try JSONSerialization.jsonObject(with: serverData, options: .mutableContainers) as? [String: Any]{
+                            print("Response: \(requestJson)")
+                            }
+                            } catch let responseError {
+                            print("Serialisation in error in creating response body: \(responseError.localizedDescription)")
+                            let message = String(bytes: serverData, encoding: .ascii)
+                            print(message as Any)
+                            }
+                            })
+                            //Run the task
+                            webTask.resume()
+//                            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+//                                guard let data = data else { return }
+//                                print(String(data: data, encoding: .utf8)!)
+//                            }
+//
+//                            task.resume()
                         }
                     }
                 )}
