@@ -8,6 +8,7 @@
 
 import UIKit
 import Social
+import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
 
@@ -23,8 +24,31 @@ class ShareViewController: SLComposeServiceViewController {
         //let url = URL(string: "https://ptsv2.com/t/ngiaa-1572674328/post")!
         //var request = URLRequest(url: url)
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-        print("hey there");
-        print(self.extensionContext!.inputItems[0]);
+        let content = self.extensionContext!.inputItems[0] as! NSExtensionItem
+        if let item = extensionContext?.inputItems.first as? NSExtensionItem {
+            if let itemProvider = item.attachments?.first as? NSItemProvider {
+                if itemProvider.hasItemConformingToTypeIdentifier("public.url") {
+                    itemProvider.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) -> Void in
+                        if let shareURL = url as? NSURL {
+                            print (shareURL.absoluteString!);
+                            let newURL: String = shareURL.absoluteString!;
+                            let url = URL(string: "https://ptsv2.com/t/yjn0q-1572713140/post")!
+                            var request = URLRequest(url: url)
+                            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                            request.httpMethod = "POST"
+                            request.httpBody = newURL.data(using: .utf8);
+
+                            let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+                                guard let data = data else { return }
+                                print(String(data: data, encoding: .utf8)!)
+                            }
+
+                            task.resume()
+                        }
+                    }
+                )}
+            }
+        }
     }
 
     override func configurationItems() -> [Any]! {
