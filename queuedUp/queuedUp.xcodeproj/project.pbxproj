@@ -13,7 +13,34 @@
 		DD3F09C9236D338C00E23800 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD3F09C8236D338C00E23800 /* Assets.xcassets */; };
 		DD3F09CC236D338C00E23800 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD3F09CB236D338C00E23800 /* Preview Assets.xcassets */; };
 		DD3F09CF236D338C00E23800 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3F09CD236D338C00E23800 /* LaunchScreen.storyboard */; };
+		DD3F09DD236D351B00E23800 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3F09DC236D351B00E23800 /* ShareViewController.swift */; };
+		DD3F09E0236D351B00E23800 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3F09DE236D351B00E23800 /* MainInterface.storyboard */; };
+		DD3F09E4236D351B00E23800 /* queuedUpSE.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = DD3F09DA236D351A00E23800 /* queuedUpSE.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD3F09E2236D351B00E23800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD3F09B7236D338900E23800 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD3F09D9236D351A00E23800;
+			remoteInfo = queuedUpSE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD3F09E8236D351B00E23800 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DD3F09E4236D351B00E23800 /* queuedUpSE.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DD3F09BF236D338900E23800 /* queuedUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = queuedUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +51,21 @@
 		DD3F09CB236D338C00E23800 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DD3F09CE236D338C00E23800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DD3F09D0236D338C00E23800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD3F09DA236D351A00E23800 /* queuedUpSE.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = queuedUpSE.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD3F09DC236D351B00E23800 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		DD3F09DF236D351B00E23800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		DD3F09E1236D351B00E23800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DD3F09BC236D338900E23800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD3F09D7236D351A00E23800 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				DD3F09C1236D338900E23800 /* queuedUp */,
+				DD3F09DB236D351A00E23800 /* queuedUpSE */,
 				DD3F09C0236D338900E23800 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				DD3F09BF236D338900E23800 /* queuedUp.app */,
+				DD3F09DA236D351A00E23800 /* queuedUpSE.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +115,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DD3F09DB236D351A00E23800 /* queuedUpSE */ = {
+			isa = PBXGroup;
+			children = (
+				DD3F09DC236D351B00E23800 /* ShareViewController.swift */,
+				DD3F09DE236D351B00E23800 /* MainInterface.storyboard */,
+				DD3F09E1236D351B00E23800 /* Info.plist */,
+			);
+			path = queuedUpSE;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -85,15 +135,34 @@
 				DD3F09BB236D338900E23800 /* Sources */,
 				DD3F09BC236D338900E23800 /* Frameworks */,
 				DD3F09BD236D338900E23800 /* Resources */,
+				DD3F09E8236D351B00E23800 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DD3F09E3236D351B00E23800 /* PBXTargetDependency */,
 			);
 			name = queuedUp;
 			productName = queuedUp;
 			productReference = DD3F09BF236D338900E23800 /* queuedUp.app */;
 			productType = "com.apple.product-type.application";
+		};
+		DD3F09D9236D351A00E23800 /* queuedUpSE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD3F09E5236D351B00E23800 /* Build configuration list for PBXNativeTarget "queuedUpSE" */;
+			buildPhases = (
+				DD3F09D6236D351A00E23800 /* Sources */,
+				DD3F09D7236D351A00E23800 /* Frameworks */,
+				DD3F09D8236D351A00E23800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = queuedUpSE;
+			productName = queuedUpSE;
+			productReference = DD3F09DA236D351A00E23800 /* queuedUpSE.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -106,6 +175,9 @@
 				ORGANIZATIONNAME = "Alex Haight";
 				TargetAttributes = {
 					DD3F09BE236D338900E23800 = {
+						CreatedOnToolsVersion = 11.1;
+					};
+					DD3F09D9236D351A00E23800 = {
 						CreatedOnToolsVersion = 11.1;
 					};
 				};
@@ -124,6 +196,7 @@
 			projectRoot = "";
 			targets = (
 				DD3F09BE236D338900E23800 /* queuedUp */,
+				DD3F09D9236D351A00E23800 /* queuedUpSE */,
 			);
 		};
 /* End PBXProject section */
@@ -136,6 +209,14 @@
 				DD3F09CF236D338C00E23800 /* LaunchScreen.storyboard in Resources */,
 				DD3F09CC236D338C00E23800 /* Preview Assets.xcassets in Resources */,
 				DD3F09C9236D338C00E23800 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD3F09D8236D351A00E23800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD3F09E0236D351B00E23800 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +233,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD3F09D6236D351A00E23800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD3F09DD236D351B00E23800 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD3F09E3236D351B00E23800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD3F09D9236D351A00E23800 /* queuedUpSE */;
+			targetProxy = DD3F09E2236D351B00E23800 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DD3F09CD236D338C00E23800 /* LaunchScreen.storyboard */ = {
@@ -161,6 +258,14 @@
 				DD3F09CE236D338C00E23800 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DD3F09DE236D351B00E23800 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD3F09DF236D351B00E23800 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -283,6 +388,7 @@
 		DD3F09D4236D338C00E23800 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"queuedUp/Preview Content\"";
@@ -303,6 +409,7 @@
 		DD3F09D5236D338C00E23800 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"queuedUp/Preview Content\"";
@@ -315,6 +422,44 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cuhack.it.queuedUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		DD3F09E6236D351B00E23800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSQ8MR9PDG;
+				INFOPLIST_FILE = queuedUpSE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cuhack.it.queuedUp.queuedUpSE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DD3F09E7236D351B00E23800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KSQ8MR9PDG;
+				INFOPLIST_FILE = queuedUpSE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = cuhack.it.queuedUp.queuedUpSE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -337,6 +482,15 @@
 			buildConfigurations = (
 				DD3F09D4236D338C00E23800 /* Debug */,
 				DD3F09D5236D338C00E23800 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD3F09E5236D351B00E23800 /* Build configuration list for PBXNativeTarget "queuedUpSE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD3F09E6236D351B00E23800 /* Debug */,
+				DD3F09E7236D351B00E23800 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
