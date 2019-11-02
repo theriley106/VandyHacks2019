@@ -13,6 +13,7 @@ def get_page_from_url(url):
 		page_cache[url] = bs4.BeautifulSoup(res.text)
 	return page_cache[url]
 
+# This is just a really bad way to split strings
 def split_between(string, part1, part2):
 	return string.partition(part1)[2].partition(part2)[0]
 
@@ -29,6 +30,8 @@ EXAMPLE_SONGS = [
 	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
 	]
 
+
+# This is going to do the song ranking
 class controller():
 	def __init__(self):
 		self.count = {}
