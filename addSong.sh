@@ -1,0 +1,1 @@
+curl -i -H "Content-Type: application/json" -X POST -d '{"userId":"1", "url": "https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=UuefIQNZSPe_4fZNLQclVQ"}' http://localhost:5000/
