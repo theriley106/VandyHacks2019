@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect, Markup, jsonify, make_response, send_from_directory, session
 import musicController
+import main
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -23,9 +24,8 @@ def index():
 	data = request.get_json()
 	url = data['url']
 	returnedData = parseURL(url, download=True)
+	main.addToDB(returnedData)
 	return jsonify(returnedData.return_values())
-	print request.get_json()
-	return jsonify(data)
 
 @app.route('/playSong', methods=["GET"])
 def play_next_song():
