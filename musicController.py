@@ -24,13 +24,10 @@ def split_between(string, part1, part2):
 
 EXAMPLE_SONGS = [
 	"https://music.apple.com/us/album/green-light/1428764777?i=1428766615", 
-	"https://open.spotify.com/track/6ie2Bw3xLj2JcGowOlcMhb?si=v8-SiKL_Q6Gr8QrX8uV8Sg",
-	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
-	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
-	"https://open.spotify.com/track/44xykY61s1aKsgf40A5cyI?si=Lg6Z7hBDTSulG_gKAI0Rxw",
-	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
-	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
-	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
+	"https://open.spotify.com/track/0V8FYVlBFuXXTIvRnMbZyS",
+	"https://open.spotify.com/track/0V8FYVlBFuXXTIvRnMbZyS",
+	"https://open.spotify.com/track/2ekn2ttSfGqwhhate0LSR0",
+	"https://open.spotify.com/track/2ekn2ttSfGqwhhate0LSR0"
 	]
 
 
@@ -82,6 +79,11 @@ class controller():
 		del self.count[nextSong['fingerprint']]
 		return nextSong['fingerprint']
 		return info
+
+	def play_current(self):
+		if len(self.order) == 0:
+			return None
+		return self.order[0]['fingerprint']
 
 	def get_next(self):
 		# Returns next song if one exists
@@ -167,7 +169,8 @@ class parseURL():
 		# duration = page.select(".is-deep-linked .table__row__duration-counter")[0].getText()
 		self.fingerprint = self.gen_fingerprint()
 
-		threading.Thread(target=self.download).start()
+		# threading.Thread(target=self.download).start()
+		self.download()
 		return
 
 	def parse_google_play(self):
