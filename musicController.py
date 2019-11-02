@@ -29,6 +29,62 @@ EXAMPLE_SONGS = [
 	"https://open.spotify.com/track/26DKXupK5ZDKdwffxH1Jki?si=nJ2V-WO7Rs-Ei-vj9kgdoQ",
 	]
 
+class controller():
+	def __init__(self):
+		self.count = {}
+		self.fingerprint_info = {}
+		self.order = []
+		return
+
+	def add(self, songInfo):
+		if len(self.order) == 0:
+			prevOrder = "None"
+		else:
+			prevOrder = str(self.order[0]['fingerprint'])
+		fingerPrint = songInfo['fingerprint']
+		print("Adding {} to the queue".format(fingerPrint))
+		if fingerPrint not in self.count:
+			self.count[fingerPrint] = 0
+		self.count[fingerPrint] += 1
+
+		if fingerPrint not in self.fingerprint_info:
+			self.fingerprint_info[fingerPrint] = songInfo
+
+		while len(self.order) > 0:
+			self.order.pop()
+
+		allCountNumbers = sorted(list(set(self.count.values())))[::-1]
+
+		while len(allCountNumbers) > 0:
+			infoVals = []
+			for fingerPrintVal, info in self.fingerprint_info.iteritems():
+				if self.count[fingerPrintVal] == allCountNumbers[0]:
+					infoVals.append(info)
+			allCountNumbers.pop(0)
+			infoVals.sort(key=lambda k: k['time_added'])
+			for val in infoVals:
+				self.order.append(val)
+		if str(self.order[0]['fingerprint']) != prevOrder:
+			print("ORDER CHANGED: {} is now next".format(self.order[0]['fingerprint']))
+
+	def play_next(self):
+		if len(self.order) == 0:
+			return None
+		nextSong = self.order.pop(0)
+		info = self.fingerprint_info[nextSong['fingerprint']]
+		del self.fingerprint_info[nextSong['fingerprint']]
+		del self.count[nextSong['fingerprint']]
+		return nextSong['fingerprint']
+		return info
+
+	def get_next(self):
+		# Returns next song if one exists
+		if len(self.order) == 0:
+			return None
+		return self.order[0]['fingerprint']
+
+
+songController = controller()
 
 
 class parseURL():
