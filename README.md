@@ -19,3 +19,6 @@ functions
 	function that parses apple music
 	function that downloads songs given artist and song name
 		maybe unique identifier.mp3 could be song name?
+
+swift app
+	share extension to send post request with song url to server
