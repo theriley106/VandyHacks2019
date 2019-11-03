@@ -57,11 +57,12 @@ def get_song_order():
 					</div>
 					<div class="col">
 					  <div class="row mx-auto float-right float-right">
-						<a> {} </a>
+						<a font size="3"> {} </a>
 					</div>
 				  </div>
 				</div>
 			  </li>
+			  <br>
 		'''.format(val['song'], val['artist'], val['album'], gen_random_time())
 	return a
 
