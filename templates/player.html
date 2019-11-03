@@ -62,6 +62,19 @@
       color: #00004E;
     }
 
+    body{
+      background: rgb(0,0,78);
+      background: linear-gradient(127deg, rgba(0,0,78,1) 0%, rgba(221,229,255,1) 33%, rgba(210,212,255,1) 78%, rgba(0,0,78,1) 100%);
+      height: 100%;
+      margin: 0;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    html{
+      height: 100%;
+    }
+
   </style>
 
   <script>
@@ -127,7 +140,7 @@
       <div class="row play-info mx-auto">
         <div class="col">
           <div id="rowVals">
-            
+
         </div>
           <div class="row mx-auto">
             <img src="/static/back.png" class="play-button"/>
@@ -144,7 +157,7 @@
                   window.audio.pause();
                   document.getElementById("playButtonImage").src = "/static/play.png";
                 }
-                  
+
               }
 
 
@@ -161,7 +174,7 @@
 
   <script>
 
-  
+
 
   var ws = new WebSocket("ws://" + window.location.host  + "/echo");
        ws.onopen = function() {

@@ -4,6 +4,7 @@ from flask_sockets import Sockets
 import datetime
 import time
 import main
+import random
 app = Flask(__name__, static_url_path='/static')
 sockets = Sockets(app)
 
@@ -35,6 +36,10 @@ def post_request():
 	songController.add(x)
 	return 'This works'
 
+
+def gen_random_time():
+	return "{}:{}".format(random.randint(2,5), random.randint(10, 59))
+
 @app.route("/getSongOrder", methods=["GET"])
 def get_song_order():
 	b = ""
@@ -43,6 +48,7 @@ def get_song_order():
 	for val in songController.order[1:]:
 		a += '''
 		<li href="#">
+
 				<div class="song-detail">
 				  <div class="row">
 					<div class="col">
@@ -51,14 +57,13 @@ def get_song_order():
 					</div>
 					<div class="col">
 					  <div class="row mx-auto float-right float-right">
-						<a onclick="document.getElementById('up1').src='/static/upactive.png'; document.getElementById('down1').src='down.png'"><img id="up1" src="/static/up.png" class="arrow"/></a>
-						<a onclick="document.getElementById('up1').src='/static/up.png'; document.getElementById('down1').src='/static/downactive.png'"><img id="down1" src="/static/down.png" class="arrow "/></a>
-					  </div>
+						<font size ="5"> {} </font>
 					</div>
 				  </div>
 				</div>
 			  </li>
-		'''.format(val['song'], val['artist'], val['album'])
+			  <br>
+		'''.format(val['song'], val['artist'], val['album'], gen_random_time())
 	return a
 
 @sockets.route('/echo')
@@ -70,7 +75,7 @@ def echo_socket(ws):
 			ws.send(str(datetime.datetime.now()))
 			prevValue = str(songController.order)
 		time.sleep(.1)
-		
+
 
 
 @app.route("/getCurrent", methods=["GET"])
@@ -108,13 +113,13 @@ def index():
 @app.route('/playCurrent', methods=["GET"])
 def play_current_song():
 	return send_file("songs/{}.mp3".format(songController.play_current()))
-	
+
 @app.route('/playNext', methods=["GET"])
 def play_next_song():
 	songController.play_next()
 	return "playing next song"
 	return send_file("songs/{}.mp3".format(songController.play_current()))
-	
+
 
 
 @app.route('/test', methods=['GET'])
