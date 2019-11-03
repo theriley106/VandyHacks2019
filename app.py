@@ -104,6 +104,7 @@ def get_current_album_artwork():
 
 @app.route('/addSong', methods=["POST"])
 def index():
+	print(request.get_json())
 	data = request.get_json()
 	url = data['url']
 	returnedData = musicController.parseURL(url, download=True)
