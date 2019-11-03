@@ -156,7 +156,7 @@
 
   
 
-  var ws = new WebSocket("ws://localhost:8000/echo");
+  var ws = new WebSocket("ws://" + window.location.host  + "/echo");
        ws.onopen = function() {
            ws.send("socket open");
            console.log("SOCKET OPEN");
