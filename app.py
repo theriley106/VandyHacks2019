@@ -34,7 +34,7 @@ def post_request():
 	#print request.data
 	#print request.get_json
 	if 'music.apple' in dict(request.form).keys()[0]:
-		val = ''.join(re.findall("\d+", str(request.form[dict(request.form).keys()[0]][0])))
+		val = ''.join(re.findall("\d+", str(dict(request.form)[dict(request.form).keys()[0]][0])))
 		print("VAL ")
 		print(val)
 		url = ''.join(dict(request.form).keys()[0] + val)
