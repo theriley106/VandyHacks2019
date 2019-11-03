@@ -5,6 +5,7 @@ import datetime
 import time
 import main
 import random
+import re
 app = Flask(__name__, static_url_path='/static')
 sockets = Sockets(app)
 
@@ -33,7 +34,8 @@ def post_request():
 	#print request.data
 	#print request.get_json
 	if 'music.apple' in dict(request.form).keys()[0]:
-		url = ''.join(dict(request.form).keys()[0] + request.form[dict(request.form).keys()[0]][0])
+		val = ''.join(re.findall("\d+", str(request.form[dict(request.form).keys()[0]][0])))
+		url = ''.join(dict(request.form).keys()[0] + val)
 	else:
 		url = dict(request.form).keys()[0].partition("?")[0]
 	print("URL: {}".format(url))
