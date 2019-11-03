@@ -4,6 +4,7 @@ from flask_sockets import Sockets
 import datetime
 import time
 import main
+import random
 app = Flask(__name__, static_url_path='/static')
 sockets = Sockets(app)
 
