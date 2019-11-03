@@ -27,6 +27,7 @@ for i in range(5):
 
 @app.route("/postRequest", methods=["POST"])
 def post_request():
+	print request_get_json()
 	#print request.data
 	#print request.get_json
 	url = dict(request.form).keys()[0].partition("?")[0]
