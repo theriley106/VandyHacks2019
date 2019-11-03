@@ -65,10 +65,10 @@
   </style>
 
   <script>
-  window.audio = null;
+  window.audio = window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
   function refresh(){
     // window.audio.stop()
-    window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
+    // window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
     update_order();
   }
 
