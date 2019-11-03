@@ -31,7 +31,11 @@ def post_request():
 	print request.get_json()
 	#print request.data
 	#print request.get_json
-	url = dict(request.form).keys()[0].partition("?")[0]
+	if 'music.apple' in dict(request.form).keys()[0]:
+		url = ''.join(dict(request.form).keys())
+	else:
+		url = dict(request.form).keys()[0].partition("?")[0]
+	print("URL: {}".format(url))
 	returnedData = musicController.parseURL(url, download=True)
 	x = vars(returnedData)
 	main.addToDB(x)
