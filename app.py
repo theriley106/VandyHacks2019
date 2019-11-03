@@ -29,6 +29,7 @@ for i in range(5):
 def post_request():
 	print request.form
 	print request.get_json()
+	print dict(request.form)
 	#print request.data
 	#print request.get_json
 	if 'music.apple' in dict(request.form).keys()[0]:
