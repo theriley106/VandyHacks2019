@@ -23,7 +23,14 @@ def split_between(string, part1, part2):
 
 
 
-EXAMPLE_SONGS = ['https://open.spotify.com/track/2SG0RPcyWgUPqLCKWLtYc1', 'https://open.spotify.com/track/7oK9VyNzrYvRFo7nQEYkWN', 'https://open.spotify.com/track/3yNZ5r3LKfdmjoS3gkhUCT', 'https://open.spotify.com/track/3Yh9lZcWyKrK9GjbhuS0hR', 'https://open.spotify.com/track/6u7jPi22kF8CTQ3rb9DHE7', 'https://open.spotify.com/track/4yI3HpbSFSgFZtJP2kDe5m', 'https://open.spotify.com/track/2bT1PH7Cw3J9p3t7nlXCdh', 'https://open.spotify.com/track/1p80LdxRV74UKvL8gnD7ky']
+EXAMPLE_SONGS = ['https://open.spotify.com/track/2SG0RPcyWgUPqLCKWLtYc1', 
+'https://open.spotify.com/track/7oK9VyNzrYvRFo7nQEYkWN', 
+'https://open.spotify.com/track/2Fxmhks0bxGSBdJ92vM42m', 
+'https://open.spotify.com/track/3Yh9lZcWyKrK9GjbhuS0hR', 
+'https://open.spotify.com/track/6u7jPi22kF8CTQ3rb9DHE7', 
+'https://open.spotify.com/track/4yI3HpbSFSgFZtJP2kDe5m', 
+'https://open.spotify.com/track/2bT1PH7Cw3J9p3t7nlXCdh', 
+'https://open.spotify.com/track/1p80LdxRV74UKvL8gnD7ky']
 
 random.shuffle(EXAMPLE_SONGS)
 
@@ -87,6 +94,14 @@ class controller():
 		if len(self.order) == 0:
 			return None
 		return self.order[0]['fingerprint']
+
+	def reset_vals(self):
+		self.count = {}
+		self.fingerprint_info = {}
+		self.order = []
+		random.shuffle(EXAMPLE_SONGS)
+		for val in EXAMPLE_SONGS:
+			self.add(vars(parseURL(val)))
 
 
 class parseURL():

@@ -14,7 +14,7 @@ for val in musicController.EXAMPLE_SONGS:
 	songInfo = musicController.parseURL(val)
 	songController.add(vars(songInfo))
 
-print songController.order
+
 '''
 for i, val in enumerate(songController.order):
 	print("{} - {}".format(i, val['song']))
@@ -36,6 +36,10 @@ def post_request():
 	songController.add(x)
 	return 'This works'
 
+@app.route("/reset", methods=["GET"])
+def reset_app():
+	songController.reset_vals()
+	return "WORKING"
 
 def gen_random_time():
 	return "{}:{}".format(random.randint(2,5), random.randint(10, 59))
@@ -53,7 +57,7 @@ def get_song_order():
 				  <div class="row">
 					<div class="col">
 					  <h3>{}</h3>
-					  <p>{} | {}</p>
+					  <p><b>{}</b><br>{}</p>
 					</div>
 					<div class="col">
 					  <div class="row mx-auto float-right float-right">
@@ -83,10 +87,10 @@ def get_current_info():
 	if len(songController.order) == 0:
 		return ""
 	currentSong = songController.order[0]
-	a = """<div class="row">
+	a = """<center><div class="">
 			  <h1>{}</h2>
 			</div>
-			<div class="row">
+			<div class="">
 			  <h3>{} | {}</h3>
 			</div>
 			""".format(currentSong['song'], currentSong['artist'], currentSong['album'])
