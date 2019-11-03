@@ -32,7 +32,7 @@ class ShareViewController: SLComposeServiceViewController {
                         if let shareURL = url as? NSURL {
                             print (shareURL.absoluteString!);
                             let newURL: String = shareURL.absoluteString!;
-                            let url = URL(string: "https://5ad25bf7.ngrok.io/postRequest")!
+                            let url = URL(string: "http://35.238.41.48:8000/postRequest")!
                             var request = URLRequest(url: url)
                             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
                             request.httpMethod = "POST"
