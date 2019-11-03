@@ -80,8 +80,13 @@
 
   function play_next(){
     httpGet("/playNext");
-    if (window.audio !== null){
-      window.audio.pause();
+    try {
+      for (var e=0; e < 5; e++){
+        window.audio.pause();
+      }
+    }
+    catch(err) {
+      console.log("FAILED on pause");
     }
     window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
     window.audio.play();
