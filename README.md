@@ -1,5 +1,11 @@
 # VandyHacks2019
 
+## Example
+
+<p align="center">
+  <img src="static/example.png" width="700px"/>
+</p>
+
 ## Random Notes
 
 ```
