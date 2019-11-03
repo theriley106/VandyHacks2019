@@ -57,7 +57,7 @@ def get_song_order():
 					</div>
 					<div class="col">
 					  <div class="row mx-auto float-right float-right">
-						<a font size ="6"> {} </a>
+						<font size ="6"> {} </font>
 					</div>
 				  </div>
 				</div>
