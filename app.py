@@ -35,10 +35,6 @@ def post_request():
 	songController.add(x)
 	return 'This works'
 
-@app.route('/')
-def index():
-    random_number = random.randint(1, 1000)
-    return render_template('player.html', random_number=random_number)
 
 def gen_random_time():
 	return "{}:{}".format(random.randint(2,5), random.randint(10, 59))
