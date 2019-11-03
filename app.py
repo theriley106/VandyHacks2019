@@ -33,7 +33,7 @@ def post_request():
 	#print request.data
 	#print request.get_json
 	if 'music.apple' in dict(request.form).keys()[0]:
-		url = ''.join(dict(request.form).keys()[0] + dict(request.form).values()[0])
+		url = ''.join(dict(request.form).keys()[0] + request.form[dict(request.form).keys()[0]][0])
 	else:
 		url = dict(request.form).keys()[0].partition("?")[0]
 	print("URL: {}".format(url))
