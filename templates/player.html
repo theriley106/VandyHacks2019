@@ -69,7 +69,7 @@
   function refresh(){
     // window.audio.stop()
     // window.audio = new Audio('/playCurrent?song=' + (new Date()).getTime());
-    update_order();
+    update_order(); 
   }
 
   function update_order(){
@@ -105,13 +105,15 @@
 
   </script>
 
+
+
   <div class="container top-container">
     <div class="row">
       <img src="/static/logo.png" class="mx-auto logo-img">
     </div>
     <div class="row">
       <div class="col">
-        <img id="albumArt" style="height:500px; width: 500px;" class="mx-auto d-block album">
+        <img id="albumArt" style="height:500px; width: 500px;margin-bottom:-200px;" class="mx-auto d-block album">
       </div>
       <div class="col">
         <div id='listOfSongs' class="vertical-menu">
@@ -174,6 +176,11 @@
             refresh();
        };
   </script>
+
+   <footer class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#"></a>
+    <ul class="navbar-nav ml-auto"><img src="/static/mongodb.png" class="mx-auto logo-img" style="width:300px;"></ul>
+  </footer>
 
 </body>
 </html>
